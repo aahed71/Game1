@@ -235,10 +235,10 @@
         };
         
         let ghosts = [
-            { name: 'Blinky', x: 9, y: 8, color: COLORS.blinky, direction: 'left', speed: 1, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
-            { name: 'Pinky', x: 9, y: 9, color: COLORS.pinky, direction: 'up', speed: 0.9, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
-            { name: 'Inky', x: 8, y: 9, color: COLORS.inky, direction: 'up', speed: 0.9, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
-            { name: 'Clyde', x: 10, y: 9, color: COLORS.clyde, direction: 'up', speed: 0.9, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 }
+            { name: 'Blinky', x: 9, y: 8, color: COLORS.blinky, direction: 'left', speed: 0.85, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
+            { name: 'Pinky', x: 9, y: 9, color: COLORS.pinky, direction: 'up', speed: 0.75, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
+            { name: 'Inky', x: 8, y: 9, color: COLORS.inky, direction: 'up', speed: 0.75, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
+            { name: 'Clyde', x: 10, y: 9, color: COLORS.clyde, direction: 'up', speed: 0.75, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 }
         ];
         
         const DIRECTIONS = {
@@ -276,10 +276,10 @@
             };
             
             ghosts = [
-                { name: 'Blinky', x: 9, y: 8, color: COLORS.blinky, direction: 'left', speed: 1, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
-                { name: 'Pinky', x: 9, y: 9, color: COLORS.pinky, direction: 'up', speed: 0.9, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
-                { name: 'Inky', x: 8, y: 9, color: COLORS.inky, direction: 'up', speed: 0.9, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
-                { name: 'Clyde', x: 10, y: 9, color: COLORS.clyde, direction: 'up', speed: 0.9, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 }
+                { name: 'Blinky', x: 9, y: 8, color: COLORS.blinky, direction: 'left', speed: 0.85, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
+                { name: 'Pinky', x: 9, y: 9, color: COLORS.pinky, direction: 'up', speed: 0.75, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
+                { name: 'Inky', x: 8, y: 9, color: COLORS.inky, direction: 'up', speed: 0.75, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 },
+                { name: 'Clyde', x: 10, y: 9, color: COLORS.clyde, direction: 'up', speed: 0.75, mode: 'chase', targetX: 9, targetY: 15, edible: false, edibleTimer: 0 }
             ];
             
             powerMode = false;
@@ -421,7 +421,7 @@
         }
         
         function moveGhost(ghost) {
-            const speed = ghost.edible ? 0.5 : (ghost.speed + (level - 1) * 0.05);
+            const speed = ghost.edible ? 0.5 : (ghost.speed + (level - 1) * 0.02); // Slower speed increase per level
             
             const validDirs = [];
             for (const [dirName, dir] of Object.entries(DIRECTIONS)) {
@@ -498,7 +498,7 @@
         
         function activatePowerMode() {
             powerMode = true;
-            powerTimer = 60 * 8;
+            powerTimer = 60 * 12; // 12 seconds - longer for beginners
             
             ghosts.forEach(ghost => {
                 ghost.edible = true;
