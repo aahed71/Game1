@@ -102,16 +102,23 @@
             background: rgba(255, 215, 0, 0.4);
         }
         
-        /* Show mobile controls on touch devices */
-        @media (hover: none) and (pointer: coarse) {
-            .mobile-controls {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .controls {
-                display: none;
-            }
+        /* Mobile Touch Controls - Always visible for testing */
+        .mobile-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 15px auto 0 auto;
+            gap: 10px;
+            background: rgba(0,0,0,0.85);
+            border-radius: 12px;
+            padding: 12px 0 8px 0;
+            max-width: 448px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        .controls {
+            display: none;
         }
         
         /* Responsive adjustments */
@@ -141,18 +148,17 @@
         </div>
         <canvas id="gameCanvas" width="448" height="496"></canvas>
         <div class="controls">ARROW KEYS to move | P to pause | SPACE to start</div>
-        
         <!-- Mobile Touch Controls -->
         <div class="mobile-controls">
+            <div class="action-buttons" style="margin-bottom: 10px;">
+                <div class="action-btn" id="startBtn">START</div>
+                <div class="action-btn" id="pauseBtn">PAUSE</div>
+            </div>
             <div class="dpad">
                 <div class="dpad-btn dpad-up" data-direction="up">▲</div>
                 <div class="dpad-btn dpad-left" data-direction="left">◀</div>
                 <div class="dpad-btn dpad-right" data-direction="right">▶</div>
                 <div class="dpad-btn dpad-down" data-direction="down">▼</div>
-            </div>
-            <div class="action-buttons">
-                <div class="action-btn" id="pauseBtn">PAUSE</div>
-                <div class="action-btn" id="startBtn">START</div>
             </div>
         </div>
     </div>
